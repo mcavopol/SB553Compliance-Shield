@@ -20,6 +20,30 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://sb553compliance-shield.com",
+    title: "SB 553 Compliance Software | SB 553 Compliance Shield",
+    description:
+      "SB553Shield: Effortless SB 553 compliance for California employers. Generate plans, train staff, log incidents & audit-proof your WVPP.",
+    siteName: "SB 553 Compliance Shield",
+    images: [
+      {
+        url: "https://sb553compliance-shield.com/downtown-la-evening.png",
+        width: 1200,
+        height: 630,
+        alt: "Los Angeles skyline - SB 553 Compliance Shield",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SB 553 Compliance Software | SB 553 Compliance Shield",
+    description:
+      "SB553Shield: Effortless SB 553 compliance for California employers. Generate plans, train staff, log incidents & audit-proof your WVPP.",
+    images: ["https://sb553compliance-shield.com/downtown-la-evening.png"],
+  },
     generator: 'v0.dev'
 }
 
