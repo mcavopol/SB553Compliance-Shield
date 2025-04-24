@@ -50,9 +50,6 @@ export default function BetaSignupForm() {
       // The actual form submission will be handled by FormSubmit.co
       // This is just for client-side validation and tracking
 
-      // Normally we would submit the form here, but with FormSubmit.co
-      // the form will be submitted directly to their endpoint
-
       // We'll simulate a successful submission for the demo
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -100,6 +97,9 @@ export default function BetaSignupForm() {
         <input type="hidden" name="_subject" value="New SB553Shield Beta Signup" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value={typeof window !== "undefined" ? window.location.href : ""} />
+
+        {/* Honeypot field to prevent spam */}
+        <input type="text" name="_honey" style={{ display: "none" }} />
 
         <FormField
           control={form.control}
