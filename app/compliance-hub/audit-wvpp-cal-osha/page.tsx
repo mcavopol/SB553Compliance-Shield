@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ChevronRight, Download, CheckCircle, ChevronLeft } from "lucide-react"
+import { ChevronRight, CheckCircle, ChevronLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 
@@ -127,19 +127,19 @@ export default function AuditWvppCalOsha() {
         </div>
 
         <div className="bg-primary/5 p-8 rounded-xl my-12 flex flex-col items-center text-center border border-primary/10">
-          <h3 className="text-xl font-bold mb-4">Download the Audit Checklist</h3>
+          <h3 className="text-xl font-bold mb-4">Get Complete Audit Tools</h3>
           <p className="mb-6 max-w-2xl text-muted-foreground">
-            Get our comprehensive WVPP audit checklist to ensure your Cal/OSHA inspection readiness.
+            Join our beta program for access to comprehensive WVPP audit tools and Cal/OSHA inspection readiness
+            resources.
           </p>
-          <Button size="lg" className="gap-2">
-            <Download className="h-4 w-4" />
-            Download the Audit Checklist (Free PDF)
+          <Button size="lg" className="gap-2" asChild>
+            <Link href="/#beta-signup">Join Beta Program</Link>
           </Button>
         </div>
 
         <div className="flex justify-center my-10">
-          <Button asChild size="lg" variant="outline">
-            <Link href="/#beta-signup">Join SBShield Beta & Automate Your Compliance</Link>
+          <Button asChild size="lg">
+            <Link href="/#beta-signup">Join Our Beta Program</Link>
           </Button>
         </div>
 

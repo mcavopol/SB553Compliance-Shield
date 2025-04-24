@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ChevronRight, Download, CheckCircle, ChevronLeft } from "lucide-react"
+import { ChevronRight, CheckCircle, ChevronLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Separator } from "@/components/ui/separator"
@@ -173,11 +173,12 @@ export default function RemoteWorkerRequirements() {
         </div>
 
         <div className="bg-primary/5 p-8 rounded-xl my-10 flex flex-col items-center text-center border border-primary/10">
-          <h3 className="text-xl font-bold mb-4">Download the Free SB 553 Remote Worker Checklist</h3>
-          <p className="mb-6 max-w-2xl text-muted-foreground">Capture key tasks in a compact, printable PDF.</p>
-          <Button className="gap-2">
-            <Download className="h-4 w-4" />
-            Get Checklist (PDF)
+          <h3 className="text-xl font-bold mb-4">Join Our Beta Program</h3>
+          <p className="mb-6 max-w-2xl text-muted-foreground">
+            Get access to our complete SB 553 compliance solution, including remote worker checklists and tools.
+          </p>
+          <Button asChild className="gap-2">
+            <Link href="/#beta-signup">Join Beta Program</Link>
           </Button>
         </div>
 
@@ -224,7 +225,7 @@ export default function RemoteWorkerRequirements() {
 
         <div className="flex justify-center my-10">
           <Button asChild size="lg">
-            <Link href="/#beta-signup">Explore SBShield & Join Beta</Link>
+            <Link href="/#beta-signup">Join Our Beta Program</Link>
           </Button>
         </div>
 

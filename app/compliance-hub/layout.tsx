@@ -1,7 +1,7 @@
 import type React from "react"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
-import { SiteHeader } from "@/components/layout/site-header"
+import { MobileHeader } from "@/components/layout/mobile-header"
 import { SiteFooter } from "@/components/layout/site-footer"
 
 export const metadata = {
@@ -17,7 +17,7 @@ export default function ComplianceHubLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-white">
-      <SiteHeader />
+      <MobileHeader />
       <div className="container px-4 py-8 md:px-6 max-w-5xl mx-auto">
         <div className="flex items-center gap-1 text-sm text-muted-foreground mb-8">
           <Link href="/" className="hover:text-primary">

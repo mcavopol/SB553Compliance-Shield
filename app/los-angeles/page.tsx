@@ -50,8 +50,8 @@ export default function LosAngelesLanding() {
               </p>
               <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
                 <Button asChild size="lg">
-                  <Link href="#la-offer">
-                    Get Your Free L.A. Audit Kit <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/#beta-signup">
+                    Join Our Beta Program <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
@@ -112,6 +112,13 @@ export default function LosAngelesLanding() {
                 SBShield is different—the only platform built exclusively for SB 553 compliance with L.A.-specific
                 templates, training, and incident logging designed from the ground up.
               </p>
+              <div className="mt-6">
+                <Button asChild size="lg">
+                  <Link href="/#beta-signup">
+                    Join Our Beta Program <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
             <div className="flex items-center justify-center">
               <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden">
@@ -315,8 +322,8 @@ export default function LosAngelesLanding() {
               </ul>
               <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
                 <Button asChild size="lg">
-                  <Link href="#claim-form">
-                    Claim Your Free L.A. Audit Kit <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/#beta-signup">
+                    Join Our Beta Program <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </div>
@@ -383,8 +390,8 @@ export default function LosAngelesLanding() {
                     <Label htmlFor="employees">Number of Employees</Label>
                     <Input id="employees" placeholder="e.g. 25" />
                   </div>
-                  <Button type="submit" className="w-full">
-                    Get Your Free L.A. Audit Kit
+                  <Button type="submit" className="w-full" asChild>
+                    <Link href="/#beta-signup">Join Our Beta Program</Link>
                   </Button>
                 </form>
               </CardContent>

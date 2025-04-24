@@ -1,7 +1,6 @@
 import type React from "react"
 import { CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { SafeImage } from "@/components/ui/safe-image"
 
 interface FeatureCardProps {
   icon: React.ReactNode
@@ -9,11 +8,9 @@ interface FeatureCardProps {
   description: string
   features?: string[]
   benefit?: string
-  imageSrc?: string
-  imageAlt?: string
 }
 
-export function FeatureCard({ icon, title, description, features, benefit, imageSrc, imageAlt }: FeatureCardProps) {
+export function FeatureCard({ icon, title, description, features, benefit }: FeatureCardProps) {
   return (
     <Card className="flex flex-col h-full">
       <CardHeader>
@@ -22,17 +19,6 @@ export function FeatureCard({ icon, title, description, features, benefit, image
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1">
-        {imageSrc && (
-          <div className="mb-4 rounded-md overflow-hidden border">
-            <SafeImage
-              src={imageSrc}
-              alt={imageAlt || title}
-              width={300}
-              height={160}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        )}
         {features ? (
           <ul className="space-y-2">
             {features.map((feature, index) => (

@@ -11,9 +11,6 @@ import {
   Bell,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
@@ -237,54 +234,26 @@ export default function IncidentLogTemplate() {
         </div>
 
         <div className="bg-primary/5 p-8 rounded-xl my-12 border border-primary/10">
-          <h2 className="text-2xl font-bold mb-6 text-center">Download Your Free Incident Log Template</h2>
-          <p className="text-center mb-8 text-muted-foreground">Fill in your details and get instant access:</p>
+          <h2 className="text-2xl font-bold mb-6 text-center">Get Access to Our Complete SB 553 Compliance Solution</h2>
+          <p className="text-center mb-8 text-muted-foreground">
+            Join our beta program to access not just incident log templates, but our entire suite of SB 553 compliance
+            tools.
+          </p>
 
-          <div className="max-w-md mx-auto">
-            <form className="space-y-4">
-              <div>
-                <Label htmlFor="email" className="text-sm font-medium">
-                  Work Email
-                </Label>
-                <Input id="email" type="email" placeholder="you@company.com" className="mt-1" />
-              </div>
-              <div>
-                <Label htmlFor="company" className="text-sm font-medium">
-                  Company Name
-                </Label>
-                <Input id="company" placeholder="Your Company" className="mt-1" />
-              </div>
-              <div>
-                <Label htmlFor="locations" className="text-sm font-medium">
-                  Number of Retail Locations
-                </Label>
-                <Select>
-                  <SelectTrigger id="locations" className="mt-1">
-                    <SelectValue placeholder="Select number of locations" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">1 location</SelectItem>
-                    <SelectItem value="2-5">2-5 locations</SelectItem>
-                    <SelectItem value="6-10">6-10 locations</SelectItem>
-                    <SelectItem value="11-50">11-50 locations</SelectItem>
-                    <SelectItem value="50+">50+ locations</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button type="submit" className="w-full gap-2 mt-2">
-                <Download className="h-4 w-4" />
-                Download Now
-              </Button>
-            </form>
-            <div className="mt-4 text-center space-y-2">
-              <p className="text-xs text-muted-foreground">
-                No credit card required. Includes PDF, Excel, and Google Sheets versions.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                By downloading, you agree to receive occasional compliance tips and product updates. You can unsubscribe
-                at any time.
-              </p>
-            </div>
+          <div className="max-w-md mx-auto text-center">
+            <p className="mb-6 text-muted-foreground">
+              Our beta program includes access to all features of SBShield, including customizable incident logs, WVPP
+              templates, training modules, and audit-ready documentation.
+            </p>
+            <Button asChild size="lg" className="gap-2">
+              <Link href="/#beta-signup">
+                <Shield className="h-4 w-4" />
+                Join Beta Program
+              </Link>
+            </Button>
+            <p className="mt-4 text-xs text-muted-foreground">
+              No credit card required. Beta participants get priority access and special pricing when we launch.
+            </p>
           </div>
         </div>
 
@@ -318,11 +287,14 @@ export default function IncidentLogTemplate() {
         <div className="bg-primary/5 p-8 rounded-xl my-10 text-center border border-primary/10">
           <h3 className="text-xl font-bold mb-4">Ready to streamline your SB 553 compliance?</h3>
           <p className="mb-6 text-muted-foreground">
-            Download the incident log now and turn chaotic reporting into a simple, repeatable process.
+            Join our beta program for a complete solution that turns chaotic compliance into a simple, repeatable
+            process.
           </p>
-          <Button size="lg" className="gap-2">
-            <Shield className="h-4 w-4" />
-            Get My Free Template
+          <Button asChild size="lg" className="gap-2">
+            <Link href="/#beta-signup">
+              <Shield className="h-4 w-4" />
+              Join Beta Program
+            </Link>
           </Button>
         </div>
 

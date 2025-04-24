@@ -21,6 +21,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { MobileHeader } from "@/components/layout/mobile-header"
 
 export const metadata = {
   title: "Santa Clara's Only Pure-Play SB 553 Compliance Solution | SB 553 Compliance Shield",
@@ -57,37 +58,7 @@ export default function SantaClaraLanding() {
           }),
         }}
       />
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container px-4 py-3 md:py-0">
-          <div className="flex h-10 md:h-16 items-center justify-between">
-            <div className="flex gap-2 items-center">
-              <Link href="/" className="flex items-center gap-2">
-                <Shield className="h-5 w-5 md:h-6 md:w-6 text-primary" />
-                <span className="text-base md:text-xl font-bold">SB553 Compliance Shield</span>
-              </Link>
-            </div>
-            <div className="flex flex-1 items-center justify-end space-x-4">
-              <nav className="flex items-center space-x-4">
-                <Link
-                  href="/#features"
-                  className="hidden md:inline-flex text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                >
-                  Features
-                </Link>
-                <Link
-                  href="/compliance-hub"
-                  className="hidden md:inline-flex text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                >
-                  Resources
-                </Link>
-                <Button asChild size="sm">
-                  <Link href="#santa-clara-offer">Get Compliance Kit</Link>
-                </Button>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
+      <MobileHeader />
 
       <main className="flex-1">
         {/* Hero Section */}
@@ -112,8 +83,8 @@ export default function SantaClaraLanding() {
                 </p>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
                   <Button asChild size="lg">
-                    <Link href="#santa-clara-offer">
-                      Get Your Free Santa Clara Compliance Kit <ArrowRight className="ml-2 h-4 w-4" />
+                    <Link href="/#beta-signup">
+                      Join Our Beta Program <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
@@ -392,8 +363,8 @@ export default function SantaClaraLanding() {
                 Ready to switch from generic compliance tools to the only platform built exclusively for SB 553?
               </p>
               <p>
-                <Link href="/" className="text-primary hover:underline font-medium">
-                  Get SBShield for purpose-built SB 553 compliance
+                <Link href="/#beta-signup" className="text-primary hover:underline font-medium">
+                  Join our beta program for purpose-built SB 553 compliance
                 </Link>{" "}
                 or{" "}
                 <Link href="/compliance-hub" className="text-primary hover:underline">
@@ -442,8 +413,8 @@ export default function SantaClaraLanding() {
                 </ul>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row pt-4">
                   <Button asChild size="lg">
-                    <Link href="#claim-form">
-                      Claim Your Free Kit <ArrowRight className="ml-2 h-4 w-4" />
+                    <Link href="/#beta-signup">
+                      Join Our Beta Program <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
@@ -528,8 +499,8 @@ export default function SantaClaraLanding() {
                       <Label htmlFor="employees">Number of Employees</Label>
                       <Input id="employees" placeholder="e.g. 25" />
                     </div>
-                    <Button type="submit" className="w-full">
-                      Get Your Free Santa Clara Compliance Kit
+                    <Button type="submit" className="w-full" asChild>
+                      <Link href="/#beta-signup">Join Our Beta Program</Link>
                     </Button>
                   </form>
                 </CardContent>

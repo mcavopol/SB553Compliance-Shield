@@ -58,7 +58,7 @@ export default function ComplianceHub() {
           </div>
           <Button asChild size="lg" className="shrink-0">
             <Link href="/#beta-signup">
-              Join Our Beta <ArrowRight className="ml-2 h-4 w-4" />
+              Join Our Beta Program <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>

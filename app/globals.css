@@ -93,17 +93,108 @@
   }
 }
 
-/* Dropdown menu positioning fixes */
-.dropdown-menu-container {
-  position: relative;
+/* Dropdown menu styling and fixes */
+[data-radix-popper-content-wrapper] {
+  z-index: 50 !important;
 }
 
-@media (min-width: 768px) {
-  [data-radix-popper-content-wrapper] {
-    position: absolute !important;
-    transform: none !important;
-    top: 100% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+[role="menuitem"] {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+[role="menuitem"]:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* Fix dropdown menu item hover states */
+.dropdown-menu-item {
+  cursor: pointer;
+}
+
+.dropdown-menu-item:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* Hero section animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hero-text-delay-1 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.hero-text-delay-2 {
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.hero-button {
+  animation: fadeIn 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  [data-radix-popper-content-wrapper] {
+    z-index: 1000 !important;
+  }
+}
+
+/* Mobile menu animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-state="open"] > [data-radix-popper-content-wrapper] {
+  animation: slideIn 0.2s ease-out;
+}
+
+/* Ensure dropdown menu buttons are clickable */
+button.dropdown-menu-trigger {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Ensure dropdown menu items are clickable */
+a[role="menuitem"] {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+/* Fix for dropdown menu positioning */
+.dropdown-menu-content {
+  position: relative;
+  z-index: 50;
 }

@@ -1,5 +1,5 @@
 import type React from "react"
-import { SiteHeader } from "./site-header"
+import { MobileHeader } from "./mobile-header"
 import { SiteFooter } from "./site-footer"
 
 interface SiteLayoutProps {
@@ -10,7 +10,7 @@ interface SiteLayoutProps {
 export function SiteLayout({ children, showCertifications = false }: SiteLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
+      <MobileHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter showCertifications={showCertifications} />
     </div>

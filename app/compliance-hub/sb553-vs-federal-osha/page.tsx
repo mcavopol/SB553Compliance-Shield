@@ -1,7 +1,7 @@
 import { Breadcrumb } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ChevronRight, Download, AlertTriangle, CheckCircle } from "lucide-react"
+import { ChevronRight, AlertTriangle, CheckCircle } from "lucide-react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 export const metadata = {
@@ -398,23 +398,22 @@ export default function Sb553VsFederalOsha() {
               <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold text-blue-800 mb-2">
-                    Download our free "SB 553 vs OSHA Training Checklist" PDF
+                    Get access to our complete SB 553 compliance solution
                   </h3>
                 </div>
-                <Button className="shrink-0 gap-2">
-                  <Download className="h-4 w-4" />
-                  Download Now
+                <Button className="shrink-0 gap-2" asChild>
+                  <Link href="/#beta-signup">Join Beta Program</Link>
                 </Button>
               </div>
 
               <div className="bg-amber-50 p-6 rounded-lg border border-amber-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold text-amber-800 mb-2">
-                    See SBShield in action: Automate plan updates, digital sign‑offs, and incident‑linked training logs
+                    Join our beta program to automate plan updates, digital sign‑offs, and incident‑linked training logs
                   </h3>
                 </div>
-                <Button variant="outline" className="shrink-0">
-                  Get Early Access
+                <Button variant="outline" className="shrink-0" asChild>
+                  <Link href="/#beta-signup">Join Beta Program</Link>
                 </Button>
               </div>
 
@@ -443,18 +442,19 @@ export default function Sb553VsFederalOsha() {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="not-prose bg-primary/5 p-8 rounded-lg my-8">
-          <h2 className="text-2xl font-bold mb-4">Need help building a compliant training program?</h2>
-          <p className="mb-6">
-            SBShield embeds every SB 553 requirement—templates, digital sign‑offs, automated reminders, and audit‑ready
-            exports—so you're covered from day 1. Join the beta and get your first plan generated in minutes.
-          </p>
-          <div className="flex justify-center">
-            <Button asChild size="lg">
-              <Link href="/#beta-signup">Join SBShield Beta</Link>
-            </Button>
+          <div className="not-prose bg-primary/5 p-8 rounded-lg my-8">
+            <h2 className="text-2xl font-bold mb-4">Need help building a compliant training program?</h2>
+            <p className="mb-6">
+              SBShield embeds every SB 553 requirement—templates, digital sign‑offs, automated reminders, and
+              audit‑ready exports—so you're covered from day 1. Join our beta program and get your first plan generated
+              in minutes.
+            </p>
+            <div className="flex justify-center">
+              <Button asChild size="lg">
+                <Link href="/#beta-signup">Join Our Beta Program</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </article>
