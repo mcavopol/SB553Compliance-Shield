@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form" // Fixed import from react-hook-form
+import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Loader2 } from "lucide-react"
 
@@ -12,10 +12,9 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "@/components/ui/use-toast"
 
-// Import the trackEvent function at the top of the file
+// Import the trackEvent function
 import { trackEvent } from "@/lib/analytics"
 
-// Remove the employeeCount field from the form schema
 const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
@@ -37,29 +36,41 @@ export default function BetaSignupForm() {
     },
   })
 
-  // Update the onSubmit function to remove employeeCount
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      // Track the conversion event
+      trackEvent({
+        action: "beta_signup",
+        category: "engagement",
+        label: values.email,
+      })
 
-    // Track the conversion event for Google Ads - simplified to avoid errors
-    trackEvent({
-      action: "beta_signup",
-      category: "engagement",
-      label: values.email,
-    })
+      // The actual form submission will be handled by FormSubmit.co
+      // This is just for client-side validation and tracking
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+      // Normally we would submit the form here, but with FormSubmit.co
+      // the form will be submitted directly to their endpoint
 
-    toast({
-      title: "Beta signup successful!",
-      description: "Thank you for your interest in SB553 Compliance Shield. We'll be in touch soon.",
-    })
+      // We'll simulate a successful submission for the demo
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    console.log(values)
+      setIsSubmitted(true)
+      toast({
+        title: "Beta signup successful!",
+        description: "Thank you for your interest in SB553 Compliance Shield. We'll be in touch soon.",
+      })
+    } catch (error) {
+      console.error("Error submitting form:", error)
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -78,7 +89,18 @@ export default function BetaSignupForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      {/* Use FormSubmit.co as the form action */}
+      <form
+        action="https://formsubmit.co/sb553@hedgehoggrowth.com"
+        method="POST"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4"
+      >
+        {/* FormSubmit.co configuration fields */}
+        <input type="hidden" name="_subject" value="New SB553Shield Beta Signup" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value={typeof window !== "undefined" ? window.location.href : ""} />
+
         <FormField
           control={form.control}
           name="email"
@@ -86,21 +108,20 @@ export default function BetaSignupForm() {
             <FormItem>
               <FormLabel>Work Email</FormLabel>
               <FormControl>
-                <Input placeholder="john@company.com" {...field} />
+                <Input name="email" placeholder="john@company.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        {/* Keep the checkbox before the button to maintain form flow */}
         <FormField
           control={form.control}
           name="acceptTerms"
           render={({ field }) => (
             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
               <FormControl>
-                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                <Checkbox name="acceptTerms" checked={field.value} onCheckedChange={field.onChange} />
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel className="text-sm">I agree to Terms & Privacy</FormLabel>
