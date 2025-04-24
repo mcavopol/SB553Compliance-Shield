@@ -1,74 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
 import { Loader2 } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { toast } from "@/components/ui/use-toast"
-
-// Import the trackEvent function
-import { trackEvent } from "@/lib/analytics"
-
-const formSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  acceptTerms: z.literal(true, {
-    errorMap: () => ({ message: "You must accept the terms and conditions." }),
-  }),
-})
 
 export default function BetaSignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      acceptTerms: false,
-    },
-  })
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true)
-
-    try {
-      // Track the conversion event
-      trackEvent({
-        action: "beta_signup",
-        category: "engagement",
-        label: values.email,
-      })
-
-      // The actual form submission will be handled by FormSubmit.co
-      // This is just for client-side validation and tracking
-
-      // We'll simulate a successful submission for the demo
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      setIsSubmitted(true)
-      toast({
-        title: "Beta signup successful!",
-        description: "Thank you for your interest in SB553 Compliance Shield. We'll be in touch soon.",
-      })
-    } catch (error) {
-      console.error("Error submitting form:", error)
-      toast({
-        title: "Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   if (isSubmitted) {
     return (
@@ -85,69 +26,55 @@ export default function BetaSignupForm() {
   }
 
   return (
-    <Form {...form}>
-      {/* Use FormSubmit.co as the form action */}
-      <form
-        action="https://formsubmit.co/sb553@hedgehoggrowth.com"
-        method="POST"
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4"
-      >
-        {/* FormSubmit.co configuration fields */}
-        <input type="hidden" name="_subject" value="New SB553Shield Beta Signup" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value={typeof window !== "undefined" ? window.location.href : ""} />
+    <form
+      action="https://formsubmit.co/sb553@hedgehoggrowth.com"
+      method="POST"
+      className="space-y-4"
+      onSubmit={() => {
+        setIsSubmitting(true)
+        // Let the form submit naturally
+        setTimeout(() => {
+          setIsSubmitted(true)
+        }, 2000)
+      }}
+    >
+      {/* FormSubmit.co configuration fields */}
+      <input type="hidden" name="_subject" value="New SB553Shield Beta Signup" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://sb553compliance-shield.com/#thank-you" />
 
-        {/* Honeypot field to prevent spam */}
-        <input type="text" name="_honey" style={{ display: "none" }} />
+      {/* Honeypot field to prevent spam */}
+      <input type="text" name="_honey" style={{ display: "none" }} />
 
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Work Email</FormLabel>
-              <FormControl>
-                <Input name="email" placeholder="john@company.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <div className="space-y-2">
+        <Label htmlFor="email">Email Address</Label>
+        <Input id="email" name="email" type="email" placeholder="your@email.com" required />
+      </div>
 
-        <FormField
-          control={form.control}
-          name="acceptTerms"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-              <FormControl>
-                <Checkbox name="acceptTerms" checked={field.value} onCheckedChange={field.onChange} />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel className="text-sm">I agree to Terms & Privacy</FormLabel>
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <div className="flex items-start space-x-3">
+        <Checkbox id="terms" name="terms" required />
+        <Label htmlFor="terms" className="text-sm">
+          I agree to the Terms & Privacy Policy
+        </Label>
+      </div>
 
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Submitting...
-            </>
-          ) : (
-            "Join Beta Program"
-          )}
-        </Button>
+      <Button type="submit" className="w-full" disabled={isSubmitting}>
+        {isSubmitting ? (
+          <>
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            Submitting...
+          </>
+        ) : (
+          "Join Beta Program"
+        )}
+      </Button>
 
-        <p className="text-xs text-muted-foreground text-center">
-          By joining, you'll receive updates about SB553Shield. We respect your privacy and you can unsubscribe at any
-          time.
-        </p>
-      </form>
-    </Form>
+      <p className="text-xs text-muted-foreground text-center">
+        By joining, you'll receive updates about SB553Shield. We respect your privacy and you can unsubscribe at any
+        time.
+      </p>
+    </form>
   )
 }
 
